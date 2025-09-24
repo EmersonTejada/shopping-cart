@@ -1,0 +1,28 @@
+header {
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav{
+    width: 100%;
+}
+
+.navItems {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    padding: 1rem 3rem;
+}
+
+.navItems li a{
+    color: var(--color-text-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.navItems li a:hover{
+    color: var(--color-text-secondary);
+}
+
