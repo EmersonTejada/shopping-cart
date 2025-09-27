@@ -1,12 +1,52 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Shopping Cart 🛒
 
-Currently, two official plugins are available:
+Aplicación web profesional de carrito de compras desarrollada con React y Vite. Permite a los usuarios explorar productos, agregarlos al carrito, modificar cantidades y gestionar la compra de manera intuitiva y eficiente.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Funcionalidades principales
+- Visualización de productos con detalles y precios.
+- Agregar, eliminar y modificar la cantidad de productos en el carrito.
+- Vista dinámica del carrito mediante un drawer lateral.
+- Navegación entre páginas (Home, Shop, Cart) usando React Router.
+- Actualización reactiva de datos y estados de productos.
 
-## Expanding the ESLint configuration
+## Tecnologías y librerías utilizadas
+- **React**: Biblioteca principal para la construcción de interfaces de usuario.
+- **Vite**: Herramienta de desarrollo rápida y moderna para proyectos frontend.
+- **Material UI (MUI)**: Componentes visuales profesionales y responsivos.
+- **Emotion**: Estilizado CSS-in-JS para componentes personalizados.
+- **React Router**: Navegación entre páginas de la aplicación.
+- **React Query (@tanstack/react-query)**: Gestión eficiente de datos asíncronos y caché.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Estructura del proyecto
+```
+src/
+  components/        # Componentes reutilizables (Header, Footer, ProductCard, CartDrawer, etc.)
+  hooks/             # Custom hooks para lógica de negocio
+  layouts/           # Layout principal de la aplicación
+  pages/             # Páginas principales (Home, Shop, Cart)
+  routes/            # Configuración de rutas
+  utils/             # Funciones utilitarias
+public/              # Recursos estáticos
+```
+
+## Instalación y ejecución
+1. Clona el repositorio:
+	```bash
+	git clone https://github.com/EmersonTejada/shopping-cart.git
+	cd shopping-cart
+	```
+2. Instala las dependencias:
+	```bash
+	npm install
+	```
+3. Ejecuta la aplicación en modo desarrollo:
+	```bash
+	npm run dev
+	```
+
+## Autor
+Desarrollado por Emerson Tejada.
+
+---
+
