@@ -12,9 +12,9 @@ const Layout = () => {
   
   return (
     <>
-      <Header />
+      <Header cart={cart} setCart={setCart}/>
       <main>
-        <Outlet context={{cart, addToCart}}/>
+        <Outlet context={{cart, setCart, addToCart}}/>
       </main>
       <Footer />
     </>

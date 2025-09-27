@@ -1,28 +1,64 @@
-header {
-    background-color: var(--color-primary);
+.header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 4rem;
+}
+
+.nav {
+  flex: 1;
+  display: flex;
+  gap: 4rem;
+  justify-content: center;
+  align-items: center;
+}
+.button {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.navItems li a:hover {
+  color: var(--color-text-secondary);
+}
+
+.logoContainer {
+    flex-basis: 100px;
+}
+
+.logo {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.rightContainer{
+    min-width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
-.nav{
-    width: 100%;
+.cartLogo {
+  position: relative;
 }
 
-.navItems {
-    display: flex;
-    gap: 2rem;
-    justify-content: center;
-    padding: 1rem 3rem;
+.cartQuantity {
+  position: absolute;
+  top: 0;
+  right: -10px;
+  /* z-index: 1; */
+  min-width: 20px;
+  height: 20px;
+  padding: 0px 6px;
+  font-size: 0.8rem;
+  background-color: var(--color-primary);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+
+  color: var(--color-background);
+  font-weight: 500;
 }
 
-.navItems li a{
-    color: var(--color-text-primary);
-    font-size: 1.5rem;
-    font-weight: 600;
+.cartDrawerContainer {
+  width: 250px;
 }
-
-.navItems li a:hover{
-    color: var(--color-text-secondary);
-}
-

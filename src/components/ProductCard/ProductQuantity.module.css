@@ -1,0 +1,26 @@
+.productQuantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.productQuantity input::-webkit-outer-spin-button,
+.productQuantity input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.productQuantity input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.productQuantity input {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  border: none;
+  border-radius: 6px;
+  outline: none;
+  background: inherit;
+  width: 1.6rem;
+}

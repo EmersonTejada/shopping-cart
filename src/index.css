@@ -1,20 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
 :root {
   
-  --color-primary: #2563eb;   
-  --color-primary-dark: #1d4ed8;
+  --color-primary: #1f2937;   
+  --color-primary-dark: #111827;
 
  
   --color-secondary: #64748b;
   --color-secondary-dark: #475569;
 
   
-  --color-background: #f8fafc; 
+  --color-background: #fafafa; 
   --color-surface: #ffffff;    
 
   
-  --color-text-primary: #0f172a; 
+  --color-text-primary: #1f2937; 
   --color-text-secondary: #475569; 
 
   
@@ -23,7 +23,7 @@
 
   
   --font-sans: "Inter", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 * {
@@ -34,7 +34,22 @@
 
 body {
     font-family: var(--font-sans);
-    background-color: var(--color-background);
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+}
+
+main::-webkit-scrollbar {
+  width: 8px;
+}
+
+main::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+main {
+  overflow-y: auto; 
+  scrollbar-gutter: stable; 
 }
 
 #root {
@@ -44,7 +59,10 @@ body {
 }
 
 main {
-    flex: 1;
+  flex: 1;
+}
+
+.shop {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     justify-items: center;
@@ -52,10 +70,18 @@ main {
     gap: 1rem;
 }
 
+.cart {
+  flex: 1;
+  padding: 1rem 2rem;
+}
+
 a{
     text-decoration: none;
+    color: inherit;
 }
 
 li {
     list-style: none;
+    
+    
 }

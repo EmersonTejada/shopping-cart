@@ -1,49 +1,38 @@
 import { useState } from "react";
-import "./ProductCard.modules.css";
+import styles from "./ProductCard.module.css";
+
+import ProductQuantity from "./ProductQuantity";
+import handleDecrementar from "../../utils/handleDecrementar";
+import handleIncrementar from "../../utils/handleIncrementar";
 const ProductCard = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const handleIncrementar = () => {
-    if (quantity < 99) setQuantity(quantity + 1);
-  };
-
-  const handleDecrementar = () => {
-    if (quantity > 1) setQuantity(quantity - 1);
-  };
-
   const handleAddToCart = () => {
-    addToCart({...product, quantity})
-  }
+    addToCart({ ...product, quantity });
+  };
+
+  const handleChange = (e) => {
+    let value = Number(e.target.value);
+
+    if (value < 1) value = 1;
+    if (value > 99) value = 99;
+    setQuantity(value);
+  };
 
   return (
-    <div className="card-container">
+    <div className={styles.cardContainer}>
       <img src={product.image} alt="Imagen del Producto" />
       <h3>{product.title}</h3>
-      <p>Price: ${product.price}</p>
-      <div className="product-quantity">
-        <button className="decrementar" onClick={handleDecrementar}>
-          -
-        </button>
-        <input
-          type="number"
-          name="quantity"
-          value={quantity}
-          onChange={(e) => {
-            let value = Number(e.target.value);
-
-            if (value < 1) value = 1;
-            if (value > 99) value = 99;
-            setQuantity(value);
-          }}
-          placeholder="1"
-          min="1"
-          max="99"
+      <p className={styles.price}>${product.price}</p>
+      <span className={styles.productQuantityContainer}>
+        <ProductQuantity
+          quantity={quantity}
+          handleChange={handleChange}
+          handleIncrementar={() => handleIncrementar(quantity, setQuantity)}
+          handleDecrementar={() => handleDecrementar(quantity, setQuantity)}
         />
-        <button className="incrementar" onClick={handleIncrementar}>
-          +
-        </button>
-      </div>
-      <button className="addProductCart" onClick={handleAddToCart}>
+      </span>
+      <button className={styles.addProductCart} onClick={handleAddToCart}>
         Agregar al Carrito
       </button>
     </div>
