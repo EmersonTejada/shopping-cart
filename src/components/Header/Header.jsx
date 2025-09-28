@@ -1,11 +1,23 @@
 import { Link } from "react-router";
 import styles from "./Header.module.css";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
-import { Button, Divider, Drawer, IconButton, List, ListItem, ListItemText, styled, Typography } from "@mui/material";
-import { useState } from "react";
+import {
+  Button,
+  Divider,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  styled,
+  Typography,
+} from "@mui/material";
+import { useContext, useState } from "react";
 import handleDelete from "../../utils/handleDelete";
+import { CartContext } from "../../context/CartContext";
 
-const Header = ({ cart, setCart }) => {
+const Header = () => {
+  const { cart, setCart } = useContext(CartContext);
   const CustomButton = styled(Button)({
     fontWeight: "500",
     fontFamily: "Inter",
@@ -17,10 +29,7 @@ const Header = ({ cart, setCart }) => {
   const toggleDrawer = (newOpen) => {
     setOpen(newOpen);
   };
-  const total = cart.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
-  );
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
@@ -54,53 +63,56 @@ const Header = ({ cart, setCart }) => {
             anchor="right"
           >
             <div style={{ width: 350, padding: "1rem" }}>
-          <Typography variant="h6" gutterBottom>
-            Tu Carrito
-          </Typography>
-          <Divider />
+              <Typography variant="h6" gutterBottom>
+                Tu Carrito
+              </Typography>
+              <Divider />
 
-          {cart.length === 0 ? (
-            <Typography sx={{ mt: 2 }}>El carrito está vacío</Typography>
-          ) : (
-            <List>
-              {cart.map((item) => (
-                <ListItem
-                  key={item.id}
-                  secondaryAction={
-                    <Button
-                      color="error"
-                      size="small"
-                      onClick={() => handleDelete(item.id, setCart, cart)}
+              {cart.length === 0 ? (
+                <Typography sx={{ mt: 2 }}>El carrito está vacío</Typography>
+              ) : (
+                <List>
+                  {cart.map((item) => (
+                    <ListItem
+                      key={item.id}
+                      secondaryAction={
+                        <Button
+                          color="error"
+                          size="small"
+                          onClick={() => handleDelete(item.id, setCart, cart)}
+                        >
+                          Eliminar
+                        </Button>
+                      }
                     >
-                      Eliminar
-                    </Button>
-                  }
-                >
-                  <ListItemText
-                  sx={{mr: 8}}
-                    primary={item.title}
-                    secondary={`$${item.price} x ${item.quantity}`}
-                  />
-                </ListItem>
-              ))}
-            </List>
-          )}
+                      <ListItemText
+                        sx={{ mr: 8 }}
+                        primary={item.title}
+                        secondary={`$${item.price} x ${item.quantity}`}
+                      />
+                    </ListItem>
+                  ))}
+                </List>
+              )}
 
-          <Divider />
-          <Typography variant="subtitle1" sx={{ mt: 2, fontWeight: "bold" }}>
-            Total: ${total.toFixed(2)}
-          </Typography>
+              <Divider />
+              <Typography
+                variant="subtitle1"
+                sx={{ mt: 2, fontWeight: "bold" }}
+              >
+                Total: ${total.toFixed(2)}
+              </Typography>
 
-          <Button
-            variant="contained"
-            color="primary"
-            fullWidth
-            sx={{ mt: 2 }}
-            disabled={cart.length === 0}
-          >
-            Finalizar compra
-          </Button>
-        </div>
+              <Button
+                variant="contained"
+                color="primary"
+                fullWidth
+                sx={{ mt: 2 }}
+                disabled={cart.length === 0}
+              >
+                Finalizar compra
+              </Button>
+            </div>
           </Drawer>
         </div>
       </div>
