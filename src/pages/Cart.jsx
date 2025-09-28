@@ -5,16 +5,17 @@ import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
   const { cart, setCart } = useContext(CartContext);
-  console.table(cart);
-  return cart.map((product) => (
+  return (
     <section className="cart">
-      <CartProduct
-        key={product.id}
-        product={product}
-        handleDelete={() => handleDelete(product.id, setCart, cart)}
-      />
+      {cart.map((product) => (
+        <CartProduct
+          key={product.id}
+          product={product}
+          handleDelete={() => handleDelete(product.id, setCart, cart)}
+        />
+      ))}
     </section>
-  ));
+  );
 };
 
 export default Cart;

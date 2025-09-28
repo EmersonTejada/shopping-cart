@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./ProductCard.module.css";
 
 import ProductQuantity from "./ProductQuantity";
 import handleDecrementar from "../../utils/handleDecrementar";
 import handleIncrementar from "../../utils/handleIncrementar";
-const ProductCard = ({ product, addToCart }) => {
+import { CartContext } from "../../context/CartContext";
+const ProductCard = ({ product }) => {
+  const { addToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState(1);
 
   const handleAddToCart = () => {
