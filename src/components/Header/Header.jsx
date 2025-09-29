@@ -13,11 +13,10 @@ import {
   Typography,
 } from "@mui/material";
 import { useContext, useState } from "react";
-import handleDelete from "../../utils/handleDelete";
 import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
   const CustomButton = styled(Button)({
     fontWeight: "500",
     fontFamily: "Inter",
@@ -79,7 +78,7 @@ const Header = () => {
                         <Button
                           color="error"
                           size="small"
-                          onClick={() => handleDelete(item.id, setCart, cart)}
+                          onClick={() => removeFromCart(item.id)}
                         >
                           Eliminar
                         </Button>

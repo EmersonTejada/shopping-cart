@@ -1,17 +1,16 @@
 import CartProduct from "../components/CartProduct/CartProduct";
-import handleDelete from "../utils/handleDelete";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 
 const Cart = () => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart, removeFromCart } = useContext(CartContext);
   return (
     <section className="cart">
       {cart.map((product) => (
         <CartProduct
           key={product.id}
           product={product}
-          handleDelete={() => handleDelete(product.id, setCart, cart)}
+          handleDelete={() => removeFromCart(product.id)}
         />
       ))}
     </section>
