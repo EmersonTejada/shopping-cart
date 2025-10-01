@@ -1,12 +1,20 @@
 import { AddCircle, RemoveCircle } from "@mui/icons-material";
 import styles from "./ProductQuantity.module.css"
+import { ChangeEvent } from "react";
+
+interface ProductQuantityProps {
+  quantity: number;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleIncrementar: () => void;
+  handleDecrementar: () => void;
+}
 
 const ProductQuantity = ({
   quantity,
   handleChange,
   handleIncrementar,
   handleDecrementar,
-}) => {
+}: ProductQuantityProps) => {
   return (
     <>
       <div className={styles.productQuantity}>

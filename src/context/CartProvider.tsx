@@ -1,16 +1,21 @@
 import { cartReducer, initialCartState } from "../reducers/cartReducer";
 import * as cartActions from "../actions/cartActions";
-import { useReducer } from "react";
+import { ReactNode, useReducer } from "react";
 import { CartContext } from "./CartContext";
+import { Product } from "../types/product";
 
-export const CartProvider = ({ children }) => {
+interface CartProviderTypes {
+  children: ReactNode
+}
+
+export const CartProvider = ({ children }: CartProviderTypes) => {
   const [cart, dispatch] = useReducer(cartReducer, initialCartState);
 
-  const addToCart = (product) => {
+  const addToCart = (product: Product) => {
     dispatch(cartActions.addToCart(product));
   };
 
-  const removeFromCart = (id) => {
+  const removeFromCart = (id: number) => {
     dispatch(cartActions.removeFromCart(id));
   };
   return (

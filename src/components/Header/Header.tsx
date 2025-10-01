@@ -1,8 +1,9 @@
-import { Link } from "react-router";
+import { Link, LinkProps } from "react-router";
 import styles from "./Header.module.css";
 import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import {
   Button,
+  ButtonProps,
   Divider,
   Drawer,
   IconButton,
@@ -16,8 +17,9 @@ import { useContext, useMemo, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
+  type CustomButtonProps = ButtonProps & LinkProps;
   const { cart, removeFromCart } = useContext(CartContext);
-  const CustomButton = styled(Button)({
+  const CustomButton = styled(Button)<CustomButtonProps>({
     fontWeight: "500",
     fontFamily: "Inter",
     fontSize: "1rem",
@@ -25,7 +27,7 @@ const Header = () => {
   });
 
   const [open, setOpen] = useState(false);
-  const toggleDrawer = (newOpen) => {
+  const toggleDrawer = (newOpen: boolean) => {
     setOpen(newOpen);
   };
   const total = useMemo(

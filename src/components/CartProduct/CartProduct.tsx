@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import ProductQuantity from "../ProductCard/ProductQuantity";
 import handleDecrementar from "../../utils/handleDecrementar";
 import handleIncrementar from "../../utils/handleIncrementar";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import styles from "./CartProduct.module.css";
+import { Product } from "../../types/product";
 
-const CartProduct = ({ product, handleDelete }) => {
+interface CartProductProps {
+  product: Product;
+  handleDelete: () => void;
+}
+
+const CartProduct = ({ product, handleDelete }: CartProductProps) => {
   const [quantity, setQuantity] = useState(product.quantity);
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = Number(e.target.value);
 
     if (value < 1) value = 1;

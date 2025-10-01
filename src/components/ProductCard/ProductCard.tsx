@@ -1,19 +1,24 @@
-import { useContext, useState } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import styles from "./ProductCard.module.css";
 
 import ProductQuantity from "./ProductQuantity";
 import handleDecrementar from "../../utils/handleDecrementar";
 import handleIncrementar from "../../utils/handleIncrementar";
 import { CartContext } from "../../context/CartContext";
-const ProductCard = ({ product }) => {
+import { Product } from "../../types/product";
+
+interface ProductCardProps {
+  product: Product
+}
+const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart } = useContext(CartContext);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState<number>(1);
 
   const handleAddToCart = () => {
     addToCart({ ...product, quantity });
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = Number(e.target.value);
 
     if (value < 1) value = 1;
