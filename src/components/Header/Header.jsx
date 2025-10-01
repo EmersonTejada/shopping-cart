@@ -12,7 +12,7 @@ import {
   styled,
   Typography,
 } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import { CartContext } from "../../context/CartContext";
 
 const Header = () => {
@@ -28,7 +28,10 @@ const Header = () => {
   const toggleDrawer = (newOpen) => {
     setOpen(newOpen);
   };
-  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+  const total = useMemo(
+    () => cart.reduce((acc, item) => acc + item.price * item.quantity, 0),
+    [cart]
+  );
   return (
     <header className={styles.header}>
       <div className={styles.logoContainer}>
